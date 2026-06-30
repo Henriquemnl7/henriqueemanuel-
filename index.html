@@ -49,12 +49,12 @@ body {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 300;
-  height: 52px;
-  padding: 0 var(--px);
-  display: flex;
+  height: 64px;
+  padding: 0 clamp(18px, 5.2vw, 46px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
-  background: rgba(10,10,10,0.82);
+  background: rgba(10,10,10,0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 0.5px solid rgba(255,255,255,0.07);
@@ -63,7 +63,10 @@ body {
 .topbar-logo {
   display: flex;
   align-items: center;
-  gap: 9px;
+  grid-column: 1;
+  justify-self: start;
+  min-width: 0;
+  gap: 10px;
   text-decoration: none;
 }
 
@@ -75,32 +78,38 @@ body {
 }
 
 .topbar-name {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.02em;
   color: #f2efe9;
 }
 
 .topbar-clock {
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
+  grid-column: 3;
+  justify-self: end;
+  font-size: clamp(10px, 2.8vw, 11px);
   font-weight: 400;
   color: rgba(255,255,255,0.45);
   letter-spacing: 0.04em;
-  display: none;
+  white-space: nowrap;
 }
 
 .topbar-contact {
   display: flex;
   align-items: center;
-  gap: 6px;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  gap: 8px;
   background: transparent;
   border: 0.5px solid rgba(255,255,255,0.18);
-  border-radius: 7px;
-  padding: 7px 13px;
+  border-radius: 2px;
+  padding: 10px 16px;
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   color: rgba(255,255,255,0.7);
   text-decoration: none;
@@ -111,12 +120,8 @@ body {
   color: #f2efe9;
 }
 .topbar-contact svg {
-  width: 13px; height: 13px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 15px; height: 15px;
+  fill: currentColor;
   flex-shrink: 0;
 }
 
@@ -136,7 +141,7 @@ body {
   height: 100%;
   background: var(--black);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
@@ -166,29 +171,33 @@ body {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: var(--max-w);
-  padding: 52px var(--px) clamp(64px, 12vh, 120px);
+  max-width: 900px;
+  padding: 64px var(--px) clamp(56px, 9vh, 96px);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: translateY(-5vh);
 }
 
 /* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,0.14);
-  border: 0.5px solid rgba(255,255,255,0.22);
-  border-radius: 8px;
-  padding: 9px 16px;
+  justify-content: center;
+  gap: 9px;
+  background: rgba(255,255,255,0.08);
+  border: 0.5px solid rgba(255,255,255,0.14);
+  border-radius: 3px;
+  padding: 8px 14px;
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
-  color: rgba(255,255,255,0.9);
-  letter-spacing: 0.01em;
-  margin-bottom: clamp(20px, 3vw, 30px);
+  color: rgba(255,255,255,0.56);
+  letter-spacing: 0;
+  margin-bottom: clamp(26px, 5.2vw, 36px);
+  width: fit-content;
 }
 
 .badge-dot {
@@ -199,34 +208,36 @@ body {
   flex-shrink: 0;
 }
 
-/* Nome — Playfair Display (serifada, estilo Patrik) */
+/* Nome */
 .hero-name {
-  font-family: 'Playfair Display', serif;
-  font-weight: 800;
-  font-size: clamp(64px, 15vw, 112px);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 15.4vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
   color: #f2efe9;
-  margin-bottom: clamp(16px, 2.5vw, 24px);
+  margin-bottom: clamp(24px, 4.8vw, 34px);
 }
 
 /* Cargo */
 .hero-role {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: clamp(11px, 1.4vw, 14px);
-  letter-spacing: 0.22em;
+  font-size: clamp(11px, 3vw, 14px);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: clamp(32px, 5vw, 52px);
+  color: rgba(255,255,255,0.42);
+  margin-bottom: clamp(34px, 6.5vw, 52px);
 }
 
 /* Botões */
 .hero-actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: stretch;
+  gap: 12px;
   width: 100%;
+  max-width: 820px;
 }
 
 .btn-primary {
@@ -235,13 +246,13 @@ body {
   justify-content: center;
   background: #f2efe9;
   color: #0a0a0a;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 16px 28px;
-  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 18px 28px;
+  border-radius: 2px;
   text-decoration: none;
   transition: opacity .2s;
   width: 100%;
@@ -258,11 +269,11 @@ body {
   color: rgba(255,255,255,0.75);
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0;
   text-transform: none;
-  padding: 16px 28px;
-  border-radius: 4px;
+  padding: 18px 28px;
+  border-radius: 2px;
   border: 0.5px solid rgba(255,255,255,0.22);
   text-decoration: none;
   transition: border-color .2s, color .2s;
@@ -838,7 +849,14 @@ body {
 
   /* Hero */
   .hero-photo { display: block; }
-  .hero-inner { align-items: flex-start; }
+  .hero { align-items: flex-end; }
+  .hero-inner {
+    align-items: flex-start;
+    text-align: left;
+    max-width: var(--max-w);
+    padding: 52px var(--px) clamp(64px, 12vh, 120px);
+    transform: none;
+  }
   .hero-actions { flex-direction: row; }
   .btn-primary, .btn-secondary { width: auto; }
 
@@ -909,11 +927,11 @@ body {
 <header class="topbar">
   <a href="#" class="topbar-logo">
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAJUElEQVR4nO1aa4xdVRVee59z78x06EPLpDwkHV4/iFCBiiIPE2JAI5JKMKRKCRpFxUQkQX4QNPeHUeMPgoSIhohiQCU1UWoNCQqMQYgKFQSGFFugMNhUOpOBmTv3sfdaa3/+uHvPnLmdmXam7dy0029yc++s/VqvvfZa+xyiYziGYzgaAMB0moeOIQkPoGfz5s1Zp/lZVACwRES1Wu3kWq12AQCzZLyhYPn3ee+/BqBnSQkPIBsYGMidcz9sNBr9id5h1hYHAHIiIufcXcy8IdLmvf/toWZsMbBt27aSMUa8998ha1EqlbYAyI0x2mneDjuS5UVko4j8HYAFkC0J108u7r1fLyIjAE6N9CPSk+eFJGS1ijUiMu6c20RENDAwkHeWs0VAjPgWQBmKV1X1oUhfMsLnRESq+iiAIQD5EbvvZ2N6DnoS/h608MFIPzJS3oL75jMJGdtSRmfb2kpERN772wDAe39zpC+u6y/E1Yqum+C9/xiANbG9VGwrZHJZUhgRkXPuOgBQ1a2x/ZAKf8CCRSUYY0zYX9/h4eHlfX191TiuJCKXAubiLDMbARhVfd0YkwMAETXyPO8GEFT1jq6urpfSPI1G44ru7u4/hRBGG43Gub29ve8cKA8Hiv0qAIAdGxtbtWrVqtH0f2Rin6wrtmHnzp3l/v7+b1hrlxljLgPwLhH9E8CrxpgPNJvNLQDUWltali9bLVZONcasI6KPEJEVkZ8YY97O8/wpa+0qEbmmVCr9HkC2qNleKjicc+c1m81bmfkT7W1twhMRkYjcqqrjzHwfgLXzWdN7f0Gz2fyWiLwJAMx8V5y/fChkmjfS/q/X62uZ+ccqupWZP9PWJ4/fK0XkL8z8EID+oaGhntRePLraPimV7SIiGh0dXamiz8d9vz2Wuf1xns5E/mIQZManVPRfqvocM19T6LOOmV/y3n97trFzzJ8UeIKIbAeAEAK895cy85XM/LKv+0uKfRcdRZevVCpWRCoqyqq6XURuYOZ7ROTa2Ld7tmNvhjlLRK1TQFVfiWc9mPWnqZ9z7hxmfpGZL4/jSrPNedgxbd83cLqq/jm66ysicmOtVjt5Wv+BSfe36cwvHnNERN77S1T1bQCAglX1rZGRkRWxX6m1bqOfPb/svV8f+ehsAZQE2LVrVzczf09V34mK2MvM9zHzZfsLXAC6ROR2VfVReBcD31WxPSuu5Zw7T1ieazabVwNY1tFUODHlvdzmvf/u6OjoSlV9AAWo6n9U9Wcissk5d369Xj+lVqudPDExcb6I3KKqgwCAACQliMgfisLvu57fKiKPzdRnUQEg27179zLvZYv3uDDRmXmDqr6GGSAidRGptSlJRCSoalDVeqPROCNtkxnW7H7vvffeLyKPeu8/Olu/w460n+v1+kbv/N56vb62GNAArFbVXya5VdSHECaFDiFAVVlVNf2Oyrg3jp/RsklYZv4sM/92rr6HFWnvVavVNczybKPROD3RiwyJk+tVdRwAVFSjlUMIAZMfDYh0BbC+fY4Z1rYAcmb5a72OtZVKZbKYWjRgqnrrF5FHZmrH1Nl+HhS7o4V1mvAt64e4Paqjo6MrsZ86H1Pl8Z3OuRuKtIXgYPfPu0TUCyBlfIaIyBgDY4wAKBljXuAmbwghNK21BADFCYwxJoQQsizrXbFixSdjrp/PsbcBwKjitTzPv+CcOzvRFiLAghRgjAEAY4wZo0DqvT8tNbX1YwClcm95WwjhV3G9fYsZkAkhkDHmfhH5vDGGjTFhFstGBYbjQgh9IYSJKdr8cTAekM7oQWPMFXPMBwDWGPNE/Me0N5IhIhBZa4/Lsuw3yvoggFOiF+0TE4wxKJVKT6rqzp6enjdbJLMgJRyMAgIRUSjnvyaiK+fqGOv3aekrQuvPWmustcZm1oQQhAJ5m9tNIYTnReRmiqU3plJrQ0TknDuB6OAfhS1YAdFFsy5jXiCyDWa+KlpstiPsw3EcAKjNrLWZtarhXRXdG0II1tqcLJVDCLDWrs6y7O4QwtMALjbGSLRyUsQZWZa9EWmdyQgxldufyyyD9Xr9IgDlwilhAJjBQZRFWslRyvhiNblhfBx9o6OjK5vN5lki+KKqblHVenuyxMx3jYyMrCAiGh8f72Pm7cz86bhO58pkAAZ70CsiT4vI7yK9HL9zIiJmvjoK0sr1VX8+ODg4a50A4HQRqajqG0VFiMj2er3+8bGxsdXe89vVavXawcHBckeywSJ27drVDcCKl0fSfQCAUutMJyMizwLQqIS7Y7tJ+xrTb44nhRkeHl4uIjeq6r8L3sDe+wdrtdp6IqIdO1oXKR1HFGIZszzlvb890ZP1I/MPxL77S3amlcsDAwO5E3e9qj5e8IZnkhL2N9+iIFkOQLd42eq9/wWA1SLychT+icjoATMLwOzYsaMr7fGJiYkra7Xaj0Tkb0kR3vtvFvp39mFJUTAR+Toz392ylm6jGKljkEx3/+05QdoOWeHYo3q9foqqPuyc+0etVjuJqPW8QERejN6wNQVIdOrKLKFg5QzAO6q6p9ls3sLM12CeN7toPVPYKKJPsue3xsbGzkxrEBFt3rw5c85tEpE3hPm/3vuLY3tHL0oyIqJUDjPz5c65s5n11yLyODPfG5/2rBsfHz8+HZsA8pGRkRXOuRuZ+XPMfKeIPMHMD3vvLxwYGMj37t17YtFL0pqVSsV6729izy80Go2vtgfTuXBINYX44MJ7f1GpVHqGme8ol8s/SO3Oua9Ya9eGEJZnWXYaBeoJFAhAIJAFIeR5qR/ABBDuL5VKjxljXp+Lf7TSbCUiGhoa6unr69soIs8tX758EK16ZcF1wryQrFKpVKyqviUif4z0vLAletvGdAE4HsCJExMTJ+zZs6d3fHy8r1qtnlPoMxkvZnPtdo/oCDBVp39fRf+H1qXlPhG/EODmdFEcwLX6DGM6o4gkTGuvszjn1kV6+8XmbFF/n8/icX8IkKwvIs97728q0o56YOq6+nZmXjrv7hBNy/7O8t4PoPWubufT0sVCEtZ7/6Bz7kORdvS/s0c0FeCcc19yzl1XpB31SC7ebDbP9N7fGmlLQ3iiyXK15Jz7cnyKe+QdXQtFpVKxRETe+4sajUZ6V3dpCJ8ErVara6rVanphcWkEvQQAdnh4+KT4e2lYvg1LUuhjOIZjOIajEv8HF2/c/lGD7/AAAAAASUVORK5CYII=" alt="Henrique Emanuel">
-    <span class="topbar-name">Henrique</span>
+    <span class="topbar-name">Henrique©</span>
   </a>
   <span class="topbar-clock" id="relogio"></span>
   <a href="https://wa.me/5583996275255" target="_blank" rel="noopener" class="topbar-contact">
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C8.86 3 3.03 8.83 3.03 16c0 2.29.6 4.52 1.74 6.48L3 29l6.7-1.76A12.94 12.94 0 0 0 16.04 29C23.21 29 29 23.17 29 16S23.21 3 16.04 3Zm0 23.78c-2.04 0-4.03-.55-5.76-1.6l-.41-.24-3.98 1.04 1.06-3.87-.27-.43A10.74 10.74 0 0 1 5.25 16c0-5.95 4.84-10.78 10.79-10.78 5.94 0 10.76 4.83 10.76 10.78 0 5.94-4.82 10.78-10.76 10.78Zm5.9-8.07c-.32-.16-1.9-.94-2.2-1.05-.29-.11-.51-.16-.72.16-.21.32-.83 1.05-1.02 1.27-.19.21-.38.24-.7.08-.32-.16-1.37-.51-2.61-1.62-.96-.86-1.61-1.93-1.8-2.25-.19-.32-.02-.5.14-.66.15-.15.32-.38.48-.56.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.39-.26-.62-.53-.54-.72-.55h-.62c-.21 0-.56.08-.86.4-.29.32-1.13 1.11-1.13 2.7s1.16 3.13 1.32 3.34c.16.21 2.28 3.48 5.52 4.88.77.33 1.37.53 1.84.68.77.24 1.48.21 2.04.13.62-.09 1.9-.78 2.17-1.53.27-.75.27-1.4.19-1.53-.08-.13-.29-.21-.61-.37Z"/></svg>
     Contato
   </a>
 </header>
