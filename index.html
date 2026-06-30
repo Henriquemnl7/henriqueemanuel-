@@ -136,7 +136,7 @@ body {
   height: 100%;
   background: var(--black);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   position: relative;
   overflow: hidden;
@@ -167,7 +167,7 @@ body {
   z-index: 2;
   width: 100%;
   max-width: var(--max-w);
-  padding: 52px var(--px) 0; /* compensa topbar */
+  padding: 52px var(--px) clamp(64px, 12vh, 120px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -179,14 +179,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,0.1);
-  border: 0.5px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.14);
+  border: 0.5px solid rgba(255,255,255,0.22);
   border-radius: 8px;
-  padding: 8px 14px;
+  padding: 9px 16px;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.9);
   letter-spacing: 0.01em;
   margin-bottom: clamp(20px, 3vw, 30px);
 }
@@ -203,7 +203,7 @@ body {
 .hero-name {
   font-family: 'Playfair Display', serif;
   font-weight: 800;
-  font-size: clamp(52px, 13vw, 112px);
+  font-size: clamp(64px, 15vw, 112px);
   line-height: 0.92;
   letter-spacing: -0.02em;
   color: #f2efe9;
@@ -253,13 +253,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   background: transparent;
-  color: rgba(255,255,255,0.7);
-  font-family: 'Syne', sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
   padding: 16px 28px;
   border-radius: 4px;
   border: 0.5px solid rgba(255,255,255,0.22);
@@ -930,7 +931,7 @@ body {
       <p class="hero-role">Editor de Vídeo</p>
       <div class="hero-actions">
         <a href="#destaques" class="btn-primary">Ver Trabalhos</a>
-        <a href="https://wa.me/5583996275255" target="_blank" rel="noopener" class="btn-secondary">Entrar em contato</a>
+        <a href="https://wa.me/5583996275255" target="_blank" rel="noopener" class="btn-secondary">Entrar em contato <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
