@@ -6,7 +6,7 @@
 <title>Henrique Emanuel — Editor de Vídeo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 
 /* ════════════════════════════════════════
@@ -231,7 +231,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: clamp(52px, 15.4vw, 92px);
-  line-height: 0.96;
+  line-height: 0.93;
   letter-spacing: 0;
   color: #f2efe9;
   margin-bottom: clamp(24px, 4.8vw, 34px);
@@ -242,7 +242,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: clamp(11px, 3vw, 14px);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.42);
   margin-bottom: clamp(34px, 6.5vw, 52px);
@@ -301,6 +301,11 @@ body {
 .btn-secondary:hover {
   border-color: rgba(255,255,255,0.5);
   color: #f2efe9;
+}
+
+.btn-secondary span {
+  position: relative;
+  top: -2px;
 }
 
 /* ════════════════════════════════════════
@@ -437,19 +442,20 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 15px;
-  line-height: 1.78;
+  line-height: 1.82;
   color: #555550;
   margin-bottom: 0;
-  max-width: 640px;
+  max-width: 620px;
 }
 
 .ess-corpo + .ess-corpo {
-  margin-top: 1em;
+  margin-top: 0.42em;
 }
 
 .ess-divider-bot {
   height: 0.5px;
   background: rgba(0,0,0,0.12);
+  margin-top: clamp(26px, 5vw, 40px);
 }
 
 /* ════════════════════════════════════════
@@ -881,6 +887,54 @@ body {
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* ════════════════════════════════════════
+   ENTRADA INICIAL
+════════════════════════════════════════ */
+.page-loading .topbar,
+.page-loading .hero-badge,
+.page-loading .hero-name,
+.page-loading .hero-role,
+.page-loading .hero-actions {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.page-ready .topbar,
+.page-ready .hero-badge,
+.page-ready .hero-name,
+.page-ready .hero-role,
+.page-ready .hero-actions {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.7s cubic-bezier(.22,1,.36,1),
+    transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+
+.page-ready .topbar { transition-delay: 0.04s; }
+.page-ready .hero-badge { transition-delay: 0.1s; }
+.page-ready .hero-name { transition-delay: 0.16s; }
+.page-ready .hero-role { transition-delay: 0.22s; }
+.page-ready .hero-actions { transition-delay: 0.28s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .page-loading .topbar,
+  .page-loading .hero-badge,
+  .page-loading .hero-name,
+  .page-loading .hero-role,
+  .page-loading .hero-actions,
+  .page-ready .topbar,
+  .page-ready .hero-badge,
+  .page-ready .hero-name,
+  .page-ready .hero-role,
+  .page-ready .hero-actions {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ════════════════════════════════════════
    DESKTOP 768px+
 ════════════════════════════════════════ */
 @media (min-width: 768px) {
@@ -970,7 +1024,7 @@ body {
 
 </style>
 </head>
-<body>
+<body class="page-loading">
 
 <!-- ══ TOPBAR ══ -->
 <header class="topbar">
@@ -1036,8 +1090,7 @@ body {
   </div>
   <div class="essencia-text fade-up">
     <p class="ess-frase">Eu não edito vídeos, eu transformo conteúdo em resultado.</p>
-    <p class="ess-corpo">A edição é o ponto de encontro entre estratégia, narrativa e estética. Cada decisão visual tem um propósito: prender a atenção, fortalecer a mensagem e valorizar quem está diante da câmera.</p>
-    <p class="ess-corpo">Meu trabalho não termina em um vídeo bonito. Ele começa quando o conteúdo passa a gerar impacto para quem assiste e resultados para quem publica.</p>
+    <p class="ess-corpo">A edição é o ponto de encontro entre estratégia, narrativa e estética. Cada decisão visual tem um propósito: prender a atenção, fortalecer a mensagem e valorizar quem está diante da câmera. Meu trabalho não termina em um vídeo bonito. Ele começa quando o conteúdo passa a gerar impacto para quem assiste e resultados para quem publica.</p>
     <div class="ess-divider-bot"></div>
   </div>
 </section>
@@ -1180,6 +1233,18 @@ body {
 </footer>
 
 <script>
+/* ── Entrada inicial ── */
+(function introReveal() {
+  const body = document.body;
+  if (!body) return;
+  requestAnimationFrame(() => {
+    body.classList.add('page-ready');
+    window.setTimeout(() => {
+      body.classList.remove('page-loading');
+    }, 950);
+  });
+})();
+
 /* ── Relógio BRT ── */
 (function clock() {
   const el = document.getElementById('relogio');
