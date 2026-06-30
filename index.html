@@ -557,7 +557,7 @@ body {
    LIGHTBOX
 ════════════════════════════════════════ */
 .lightbox {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   background: rgba(4,4,4,0.97);
@@ -565,13 +565,26 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  overscroll-behavior: contain;
+  transition: opacity 0.24s ease;
 }
-.lightbox.open { display: flex; }
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lb-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
 
 .lb-inner {
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: min(360px, calc(100vw - 40px));
 }
 
 .lb-video {
@@ -617,7 +630,54 @@ body {
 .dest-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: clamp(46px, 12vw, 72px);
+}
+
+.portfolio-section {
+  background: var(--black);
+  padding-top: clamp(82px, 13vw, 132px);
+  padding-bottom: clamp(86px, 13vw, 140px);
+}
+
+.portfolio-section .section-inner {
+  max-width: min(100%, 920px);
+}
+
+.portfolio-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 7.2vw, 44px);
+  line-height: 1.08;
+  letter-spacing: 0;
+  color: #f2efe9;
+  margin-bottom: clamp(34px, 8vw, 56px);
+}
+
+.dest-item {
+  width: min(78vw, 304px);
+}
+
+.dest-num {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  color: rgba(242,239,233,0.36);
+  margin-bottom: 10px;
+}
+
+.dest-item .video-card {
+  width: 100%;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.22);
+}
+
+.dest-item .video-card:focus-visible {
+  outline: 1px solid rgba(242,239,233,0.72);
+  outline-offset: 5px;
 }
 
 /* ════════════════════════════════════════
@@ -999,7 +1059,11 @@ body {
   .dest-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    align-items: start;
+    gap: clamp(24px, 3vw, 36px);
+  }
+  .dest-item {
+    width: 100%;
   }
 
   /* Formatos */
@@ -1096,23 +1160,32 @@ body {
 </section>
 
 <!-- ══ PROJETOS EM DESTAQUE ══ -->
-<section class="section" style="background:var(--black);" id="destaques">
+<section class="section portfolio-section" id="destaques">
   <div class="section-inner">
     <div class="fade-up">
-      <p class="sec-eyebrow">Projetos em Destaque</p>
+      <h2 class="portfolio-title">Projetos em destaque</h2>
     </div>
     <div class="dest-grid fade-up">
-      <div class="video-card" onclick="openLB('8oZH0v3rQjw')">
-        <img class="video-thumb" src="https://i.ytimg.com/vi/8oZH0v3rQjw/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/8oZH0v3rQjw/sddefault.jpg'" alt="">
-        <div class="video-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+      <div class="dest-item">
+        <span class="dest-num">01</span>
+        <div class="video-card" role="button" tabindex="0" aria-label="Abrir projeto 01 em vídeo" onclick="openLB('8oZH0v3rQjw')" onkeydown="handleVideoKey(event, '8oZH0v3rQjw')">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/8oZH0v3rQjw/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/8oZH0v3rQjw/sddefault.jpg'" alt="Prévia do projeto 01">
+          <div class="video-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+        </div>
       </div>
-      <div class="video-card" onclick="openLB('Jx8c4pd15aw')">
-        <img class="video-thumb" src="https://i.ytimg.com/vi/Jx8c4pd15aw/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/Jx8c4pd15aw/sddefault.jpg'" alt="">
-        <div class="video-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+      <div class="dest-item">
+        <span class="dest-num">02</span>
+        <div class="video-card" role="button" tabindex="0" aria-label="Abrir projeto 02 em vídeo" onclick="openLB('Jx8c4pd15aw')" onkeydown="handleVideoKey(event, 'Jx8c4pd15aw')">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/Jx8c4pd15aw/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/Jx8c4pd15aw/sddefault.jpg'" alt="Prévia do projeto 02">
+          <div class="video-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+        </div>
       </div>
-      <div class="video-card" onclick="openLB('U2gpxNM4YOU')">
-        <img class="video-thumb" src="https://i.ytimg.com/vi/U2gpxNM4YOU/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/U2gpxNM4YOU/sddefault.jpg'" alt="">
-        <div class="video-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+      <div class="dest-item">
+        <span class="dest-num">03</span>
+        <div class="video-card" role="button" tabindex="0" aria-label="Abrir projeto 03 em vídeo" onclick="openLB('U2gpxNM4YOU')" onkeydown="handleVideoKey(event, 'U2gpxNM4YOU')">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/U2gpxNM4YOU/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/U2gpxNM4YOU/sddefault.jpg'" alt="Prévia do projeto 03">
+          <div class="video-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1204,7 +1277,7 @@ body {
   <div class="lb-inner">
     <button class="lb-close" onclick="closeLB()">✕ Fechar</button>
     <div class="lb-video">
-      <iframe id="lb-iframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+      <iframe id="lb-iframe" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
     <button class="lb-sound" onclick="unmuteVid()">🔊 Ativar som</button>
   </div>
@@ -1303,6 +1376,13 @@ function closeLB() {
 
 function closeLBbg(e) {
   if (e.target === document.getElementById('lightbox')) closeLB();
+}
+
+function handleVideoKey(e, id) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openLB(id);
+  }
 }
 
 function unmuteVid() {
