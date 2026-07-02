@@ -644,6 +644,7 @@ body {
   max-width: min(100%, 920px);
 }
 
+.section-main-title,
 .portfolio-title {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
@@ -665,7 +666,7 @@ body {
   font-size: 10px;
   line-height: 1;
   letter-spacing: 0.16em;
-  color: rgba(242,239,233,0.36);
+  color: rgba(242,239,233,0.7);
   margin-bottom: 10px;
 }
 
@@ -688,6 +689,12 @@ body {
   flex-direction: column;
 }
 
+.section-separator {
+  height: 0.5px;
+  background: rgba(255,255,255,0.22);
+  margin-bottom: clamp(20px, 4vw, 30px);
+}
+
 .fmt-item {
   display: flex;
   flex-direction: column;
@@ -700,35 +707,39 @@ body {
 
 .fmt-vid { width: 100%; max-width: 200px; }
 
-.fmt-info { width: 100%; text-align: center; }
+.fmt-info {
+  width: 100%;
+  max-width: 620px;
+  text-align: left;
+}
 
 .fmt-num {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   font-size: 10px;
   letter-spacing: 0.18em;
-  color: var(--gray2);
+  color: rgba(242,239,233,0.7);
   margin-bottom: 10px;
 }
 
 .fmt-nome {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
   font-size: clamp(22px, 4.5vw, 38px);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  color: var(--white);
+  line-height: 1.08;
+  letter-spacing: 0;
+  color: #f2efe9;
   margin-bottom: 12px;
 }
 
 .fmt-desc {
   font-family: 'Inter', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   line-height: 1.85;
-  color: var(--gray);
+  color: rgba(242,239,233,0.7);
   max-width: 440px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* ════════════════════════════════════════
@@ -1158,7 +1169,7 @@ body {
 <section class="section portfolio-section" id="destaques">
   <div class="section-inner">
     <div class="fade-up">
-      <h2 class="portfolio-title">Projetos em destaque</h2>
+      <h2 class="portfolio-title">Projetos em Destaque</h2>
     </div>
     <div class="dest-grid fade-up">
       <div class="dest-item">
@@ -1189,8 +1200,9 @@ body {
 <!-- ══ FORMATOS DE PRODUÇÃO ══ -->
 <section class="section" style="background:var(--black2);" id="formatos">
   <div class="section-inner">
+    <div class="section-separator fade-up"></div>
     <div class="fade-up">
-      <p class="sec-eyebrow">Formatos de Produção</p>
+      <h2 class="section-main-title">Formatos de Produção</h2>
     </div>
     <div class="fmt-list">
 
@@ -1202,7 +1214,7 @@ body {
           </div>
         </div>
         <div class="fmt-info">
-          <p class="fmt-num">01</p>
+          <p class="fmt-num">01.</p>
           <h3 class="fmt-nome">Essencial</h3>
           <p class="fmt-desc">Para conteúdos que priorizam clareza, autoridade e uma comunicação profissional. Uma edição limpa, estratégica e objetiva, focada em valorizar a mensagem.</p>
         </div>
@@ -1216,7 +1228,7 @@ body {
           </div>
         </div>
         <div class="fmt-info">
-          <p class="fmt-num">02</p>
+          <p class="fmt-num">02.</p>
           <h3 class="fmt-nome">Performance</h3>
           <p class="fmt-desc">Para quem busca aumentar retenção e engajamento. Um ritmo mais dinâmico, elementos visuais estratégicos e uma edição pensada para prender a atenção.</p>
         </div>
@@ -1230,7 +1242,7 @@ body {
           </div>
         </div>
         <div class="fmt-info">
-          <p class="fmt-num">03</p>
+          <p class="fmt-num">03.</p>
           <h3 class="fmt-nome">Motion Premium</h3>
           <p class="fmt-desc">Para marcas e criadores que desejam um conteúdo de alto impacto. Motion design exclusivo, identidade visual aplicada e um acabamento pensado para fortalecer autoridade e diferenciação.</p>
         </div>
@@ -1244,7 +1256,7 @@ body {
 <section class="section" style="background:var(--black3);" id="galeria">
   <div class="section-inner">
     <div class="gal-header fade-up">
-      <p class="sec-eyebrow" style="margin-bottom:0;">Mais Projetos</p>
+      <h2 class="section-main-title" style="margin-bottom:0;">Mais Projetos</h2>
       <div class="gal-nav">
         <button class="gal-arr" id="arrL" onclick="slideGal(-1)" aria-label="Anterior">
           <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
