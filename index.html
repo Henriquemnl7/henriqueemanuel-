@@ -6,7 +6,7 @@
 <title>Henrique Emanuel — Editor de Vídeo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 
 /* ════════════════════════════════════════
@@ -29,7 +29,7 @@ body {
 ════════════════════════════════════════ */
 :root {
   --black:   #0a0a0a;
-  --black2:  #0d0d0d;
+  --black2:  #0a0a0a;
   --black3:  #060606;
   --cream:   #edeade;
   --white:   #f2efe9;
@@ -325,7 +325,7 @@ body {
 .ticker-wrap {
   margin-top: 0;
   overflow: hidden;
-  background: #090909;
+  background: var(--black);
   border-top: 0.5px solid rgba(255,255,255,0.06);
   border-bottom: 0.5px solid rgba(255,255,255,0.06);
   padding: 13px 0;
@@ -801,7 +801,7 @@ body {
   position: absolute;
   right: 0; top: 0; bottom: 0;
   width: 72px;
-  background: linear-gradient(to right, transparent, var(--black3));
+  background: linear-gradient(to right, transparent, var(--black));
   pointer-events: none;
   z-index: 2;
 }
@@ -879,7 +879,6 @@ body {
   color: #f2efe9;
   display: block;
   max-width: 1040px;
-  white-space: nowrap;
 }
 
 .cta-line2 {
@@ -1031,10 +1030,6 @@ body {
    DESKTOP 768px+
 ════════════════════════════════════════ */
 @media (min-width: 768px) {
-
-  /* Topbar */
-  .topbar-clock { display: block; }
-
   /* Hero */
   .hero-photo { display: block; }
   .hero { align-items: flex-end; }
@@ -1225,7 +1220,7 @@ body {
 </section>
 
 <!-- ══ FORMATOS DE PRODUÇÃO ══ -->
-<section class="section" style="background:var(--black2);" id="formatos">
+<section class="section" style="background:var(--black);" id="formatos">
   <div class="section-inner">
     <div class="section-separator fade-up"></div>
     <div class="fade-up">
@@ -1280,7 +1275,7 @@ body {
 </section>
 
 <!-- ══ MAIS PROJETOS ══ -->
-<section class="section" style="background:var(--black3);" id="galeria">
+<section class="section" style="background:var(--black);" id="galeria">
   <div class="section-inner">
     <div class="gal-header fade-up">
       <h2 class="section-main-title" style="margin-bottom:0;">Mais Projetos</h2>
@@ -1490,3 +1485,4 @@ document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
+
