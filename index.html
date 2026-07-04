@@ -1322,14 +1322,16 @@ body {
 
 .cta-switch-wrap {
   background: var(--black3);
-  padding: 0 var(--px);
+  padding: 0;
   position: relative;
   z-index: 3;
 }
 
 .cta-switch-wrap .section-switch-line {
-  width: min(100%, var(--max-w));
+  width: 100%;
+  max-width: none;
   margin: 0 auto !important;
+  background: rgba(255,255,255,0.13) !important;
 }
 
 .cta-section {
@@ -1358,26 +1360,26 @@ body {
 }
 
 .cta-frase {
-  width: auto !important;
-  max-width: min(100%, 780px) !important;
+  width: max-content !important;
+  max-width: calc(100vw - (var(--px) * 2)) !important;
   margin-bottom: clamp(34px, 5vw, 50px) !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   gap: clamp(4px, 0.8vw, 8px) !important;
-  text-align: center !important;
+  text-align: left !important;
 }
 
 .cta-line1 {
   font-size: clamp(12px, 2vw, 29px) !important;
   white-space: nowrap !important;
   width: auto !important;
-  text-align: center !important;
+  text-align: left !important;
 }
 
 .cta-line2 {
   font-size: clamp(28px, 4.35vw, 62px) !important;
   white-space: nowrap !important;
   width: auto !important;
-  text-align: center !important;
+  text-align: left !important;
 }
 
 .rodape-nome,
@@ -1717,7 +1719,7 @@ document.querySelectorAll('[data-scroll-target]').forEach(link => {
 
     event.preventDefault();
     const topbar = document.querySelector('.topbar');
-    const offset = (topbar ? topbar.offsetHeight : 0) + (window.innerWidth < 768 ? 18 : 28);
+    const offset = topbar ? topbar.offsetHeight : 0;
     const destination = target.getBoundingClientRect().top + window.scrollY - offset;
 
     window.scrollTo({
