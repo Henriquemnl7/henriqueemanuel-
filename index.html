@@ -1182,20 +1182,31 @@ body {
 ════════════════════════════════════════ */
 .section-switch-line {
   width: 100%;
-  height: 0.5px;
-  background: rgba(255,255,255,0.24);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.16),
+    rgba(255,255,255,0.03)
+  );
+  margin-bottom: clamp(58px, 8.5vw, 104px) !important;
   flex-shrink: 0;
 }
 
 .section-title-line {
-  width: min(100%, 680px);
-  height: 0.5px;
-  margin-top: clamp(16px, 2.4vw, 24px);
-  background: rgba(255,255,255,0.12);
+  width: min(100%, 760px);
+  height: 1px;
+  margin-top: clamp(16px, 2vw, 22px) !important;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.11),
+    rgba(255,255,255,0.055),
+    rgba(255,255,255,0)
+  );
 }
 
 .section-heading-block {
-  margin-bottom: clamp(30px, 4.6vw, 52px);
+  margin-bottom: clamp(70px, 8vw, 112px) !important;
 }
 
 .section-heading-block .section-main-title,
@@ -1204,17 +1215,17 @@ body {
 }
 
 .portfolio-section {
-  padding-top: clamp(42px, 7vw, 78px) !important;
-  padding-bottom: clamp(58px, 9vw, 100px) !important;
+  padding-top: clamp(74px, 10vw, 136px) !important;
+  padding-bottom: clamp(92px, 12vw, 150px) !important;
 }
 
 #formatos,
 #galeria {
-  padding-top: clamp(38px, 6vw, 72px) !important;
+  padding-top: clamp(74px, 10vw, 136px) !important;
 }
 
 #galeria {
-  padding-bottom: clamp(44px, 7vw, 76px) !important;
+  padding-bottom: clamp(88px, 11vw, 136px) !important;
 }
 
 .gal-title-block {
@@ -1222,22 +1233,26 @@ body {
   min-width: 0;
 }
 
+.gal-header {
+  margin-bottom: clamp(70px, 8vw, 112px) !important;
+}
+
 .gal-title-block .section-title-line {
-  width: min(100%, 680px);
+  width: min(100%, 760px);
 }
 
 .cta-switch-wrap {
   background: var(--black);
-  padding: 0 var(--px);
+  padding: clamp(74px, 10vw, 136px) var(--px) 0;
 }
 
 .cta-switch-wrap .section-switch-line {
-  width: min(100%, 820px);
+  width: min(100%, var(--max-w));
   margin: 0 auto;
 }
 
 .cta-section {
-  padding-top: clamp(42px, 6vw, 76px) !important;
+  padding-top: clamp(70px, 8vw, 112px) !important;
 }
 
 .cta-section::before {
@@ -1276,6 +1291,18 @@ body {
   .section-title-line,
   .section-switch-line {
     width: 100%;
+  }
+
+  .section-switch-line {
+    margin-bottom: clamp(48px, 13vw, 68px) !important;
+  }
+
+  .section-heading-block {
+    margin-bottom: clamp(52px, 14vw, 74px) !important;
+  }
+
+  .gal-header {
+    margin-bottom: clamp(52px, 14vw, 74px) !important;
   }
 
   .cta-line1 {
