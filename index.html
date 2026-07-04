@@ -326,11 +326,28 @@ body {
   margin-top: 0;
   overflow: hidden;
   background: var(--black);
-  border-top: 0.5px solid rgba(255,255,255,0.06);
+  border-top: 0;
   border-bottom: 0.5px solid rgba(255,255,255,0.06);
   padding: 13px 0;
   position: relative;
   z-index: 2;
+}
+
+.ticker-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.18) 16%,
+    rgba(255,255,255,0.18) 84%,
+    rgba(255,255,255,0.06)
+  );
+  pointer-events: none;
 }
 
 .ticker-track {
