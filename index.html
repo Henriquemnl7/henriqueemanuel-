@@ -1218,6 +1218,19 @@ body {
   margin-bottom: 0;
 }
 
+.section-boundary {
+  background: var(--black);
+  padding: 0 var(--px);
+}
+
+.section-boundary .section-inner {
+  max-width: min(100%, 920px);
+}
+
+.section-boundary .section-switch-line {
+  margin-bottom: 0 !important;
+}
+
 .portfolio-section {
   padding-top: clamp(42px, 5.6vw, 76px) !important;
   padding-bottom: clamp(78px, 10vw, 124px) !important;
@@ -1390,9 +1403,14 @@ body {
 </section>
 
 <!-- ══ PROJETOS EM DESTAQUE ══ -->
+<div class="section-boundary">
+  <div class="section-inner">
+    <div class="section-switch-line"></div>
+  </div>
+</div>
+
 <section class="section portfolio-section" id="destaques">
   <div class="section-inner">
-    <div class="section-switch-line fade-up"></div>
     <div class="section-heading-block fade-up">
       <h2 class="portfolio-title">Projetos em Destaque</h2>
       <div class="section-title-line"></div>
