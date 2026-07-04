@@ -1377,7 +1377,9 @@ body {
   width: max-content !important;
   max-width: calc(100vw - (var(--px) * 2)) !important;
   margin-bottom: clamp(34px, 5vw, 50px) !important;
-  align-items: flex-start !important;
+  display: inline-grid !important;
+  justify-items: stretch !important;
+  align-items: start !important;
   gap: clamp(4px, 0.8vw, 8px) !important;
   text-align: left !important;
 }
@@ -1385,14 +1387,15 @@ body {
 .cta-line1 {
   font-size: clamp(12px, 2vw, 29px) !important;
   white-space: nowrap !important;
-  width: auto !important;
-  text-align: left !important;
+  width: 100% !important;
+  text-align: justify !important;
+  text-align-last: justify !important;
 }
 
 .cta-line2 {
   font-size: clamp(28px, 4.35vw, 62px) !important;
   white-space: nowrap !important;
-  width: auto !important;
+  width: 100% !important;
   text-align: left !important;
 }
 
