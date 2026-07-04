@@ -566,7 +566,7 @@ body {
   z-index: 1000;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: clamp(52px, 8vh, 72px) 20px clamp(48px, 7vh, 64px);
   opacity: 0;
   pointer-events: none;
   overscroll-behavior: contain;
@@ -585,8 +585,12 @@ body {
 
 .lb-inner {
   position: relative;
-  width: 100%;
-  max-width: min(360px, calc(100vw - 40px));
+  width: min(
+    360px,
+    calc(100vw - 40px),
+    calc((100vh - 136px) * 0.5625)
+  );
+  max-width: 100%;
 }
 
 .lb-video {
@@ -603,7 +607,7 @@ body {
 
 .lb-close {
   position: absolute;
-  top: -40px; right: 0;
+  top: -42px; right: 0;
   background: none; border: none;
   color: rgba(255,255,255,0.55);
   font-family: 'Syne', sans-serif;
@@ -616,7 +620,7 @@ body {
 
 .lb-sound {
   position: absolute;
-  bottom: -36px; right: 0;
+  bottom: -38px; right: 0;
   background: none; border: none;
   color: rgba(255,255,255,0.45);
   font-family: 'Inter', sans-serif;
@@ -625,6 +629,16 @@ body {
   transition: color 0.2s;
 }
 .lb-sound:hover { color: #f2efe9; }
+
+@media (min-width: 768px) {
+  .lb-inner {
+    width: min(
+      420px,
+      calc(100vw - 48px),
+      calc((100vh - 150px) * 0.5625)
+    );
+  }
+}
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    DESTAQUES
@@ -1630,7 +1644,7 @@ body {
     <div class="lb-video">
       <iframe id="lb-iframe" src="" title="Player de vídeo do portfólio" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
-    <button class="lb-sound" onclick="unmuteVid()">ðŸ”Š Ativar som</button>
+    <button class="lb-sound" onclick="unmuteVid()">Ativar som</button>
   </div>
 </div>
 
