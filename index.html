@@ -1345,7 +1345,8 @@ body {
   width: 100%;
   max-width: none;
   margin: 0 auto !important;
-  background: rgba(255,255,255,0.13) !important;
+  height: 1px !important;
+  background: rgba(255,255,255,0.10) !important;
 }
 
 .cta-section {
@@ -1355,9 +1356,12 @@ body {
 
 .hero,
 .ticker-wrap,
-.section-boundary,
-.rodape {
+.section-boundary {
   background: var(--black) !important;
+}
+
+.rodape {
+  background: var(--black3) !important;
 }
 
 .essencia {
@@ -1407,6 +1411,28 @@ body {
 }
 
 @media (max-width: 767px) {
+  .hero-name {
+    display: inline-block !important;
+    width: max-content !important;
+    max-width: calc(100vw - (var(--px) * 2)) !important;
+    text-align: left !important;
+  }
+
+  .hero-name-line {
+    display: block;
+    width: max-content;
+  }
+
+  .hero-name-line-top {
+    letter-spacing: var(--hero-name-top-track, 0px);
+  }
+
+  .hero-name-line-bottom {
+    letter-spacing: var(--hero-name-bottom-track, 0px);
+  }
+
+  .hero-name br { display: none !important; }
+
   .section-title-line,
   .section-switch-line {
     width: 100%;
@@ -1457,7 +1483,7 @@ body {
         <span class="badge-dot"></span>
         Disponível para projetos
       </div>
-      <h1 class="hero-name">Henrique <br>Emanuel</h1>
+      <h1 class="hero-name"><span class="hero-name-line hero-name-line-top">Henrique</span> <br><span class="hero-name-line hero-name-line-bottom">Emanuel</span></h1>
       <p class="hero-role">Editor de vídeos</p>
       <div class="hero-actions">
         <a href="#destaques" class="btn-primary" data-scroll-target="destaques">Ver Trabalhos</a>
@@ -1704,6 +1730,36 @@ body {
   window.addEventListener('pageshow', event => {
     if (event.persisted) playIntro();
   });
+})();
+
+/* Hero mobile name fit */
+(function heroNameFit() {
+  const name = document.querySelector('.hero-name');
+  const top = document.querySelector('.hero-name-line-top');
+  const bottom = document.querySelector('.hero-name-line-bottom');
+  if (!name || !top || !bottom) return;
+
+  function fit() {
+    name.style.removeProperty('--hero-name-top-track');
+    name.style.removeProperty('--hero-name-bottom-track');
+    if (window.innerWidth >= 768) return;
+
+    const topWidth = top.getBoundingClientRect().width;
+    const bottomWidth = bottom.getBoundingClientRect().width;
+    if (!topWidth || !bottomWidth || Math.abs(topWidth - bottomWidth) < 0.5) return;
+
+    const shorter = topWidth < bottomWidth ? top : bottom;
+    const shorterVar = topWidth < bottomWidth ? '--hero-name-top-track' : '--hero-name-bottom-track';
+    const gaps = Math.max(shorter.textContent.trim().length, 1);
+    const track = Math.abs(bottomWidth - topWidth) / gaps;
+
+    name.style.setProperty(shorterVar, `${track}px`);
+  }
+
+  window.addEventListener('load', fit);
+  window.addEventListener('resize', fit);
+  document.fonts?.ready.then(fit).catch(() => {});
+  fit();
 })();
 
 
