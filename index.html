@@ -1234,11 +1234,13 @@ body {
 .portfolio-section {
   padding-top: clamp(42px, 5.6vw, 76px) !important;
   padding-bottom: clamp(78px, 10vw, 124px) !important;
+  background: var(--black) !important;
 }
 
 #formatos,
 #galeria {
   padding-top: clamp(42px, 5.6vw, 76px) !important;
+  background: var(--black) !important;
 }
 
 #formatos {
@@ -1246,7 +1248,7 @@ body {
 }
 
 #galeria {
-  padding-bottom: clamp(62px, 7vw, 92px) !important;
+  padding-bottom: clamp(38px, 4.8vw, 62px) !important;
   background: var(--black) !important;
   position: relative;
   z-index: 3;
@@ -1262,25 +1264,45 @@ body {
   margin-bottom: clamp(70px, 8vw, 112px) !important;
 }
 
+.gal-nav {
+  align-self: flex-end;
+  margin-bottom: clamp(14px, 2vw, 22px);
+  transform: translateY(calc(100% + clamp(30px, 4.8vw, 56px)));
+  position: relative;
+  z-index: 4;
+}
+
 .gal-title-block .section-title-line {
   width: min(100%, 760px);
 }
 
 .cta-switch-wrap {
   background: var(--black);
-  padding: 0 var(--px) clamp(44px, 5.6vw, 76px);
+  padding: 0 var(--px) clamp(30px, 4.2vw, 52px);
   position: relative;
   z-index: 3;
 }
 
 .cta-switch-wrap .section-switch-line {
   width: min(100%, var(--max-w));
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .cta-section {
   padding-top: 0 !important;
   background: var(--black3) !important;
+}
+
+.hero,
+.ticker-wrap,
+.section-boundary,
+.cta-switch-wrap,
+.rodape {
+  background: var(--black) !important;
+}
+
+.essencia {
+  background: var(--cream) !important;
 }
 
 .cta-section::before {
