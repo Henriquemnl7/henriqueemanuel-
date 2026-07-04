@@ -1342,11 +1342,19 @@ body {
 }
 
 .cta-switch-wrap .section-switch-line {
-  width: 100%;
+  display: block;
+  width: 100vw;
   max-width: none;
-  margin: 0 auto !important;
-  height: 1px !important;
-  background: rgba(255,255,255,0.10) !important;
+  height: 0.5px !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.055),
+    rgba(255,255,255,0.13) 16%,
+    rgba(255,255,255,0.13) 84%,
+    rgba(255,255,255,0.055)
+  ) !important;
 }
 
 .cta-section {
@@ -1440,6 +1448,10 @@ body {
 
   .section-switch-line {
     margin-bottom: clamp(32px, 9vw, 46px) !important;
+  }
+
+  .cta-switch-wrap .section-switch-line {
+    margin-bottom: 0 !important;
   }
 
   .section-heading-block {
