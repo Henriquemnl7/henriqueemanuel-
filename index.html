@@ -1224,7 +1224,7 @@ body {
 }
 
 .section-boundary .section-inner {
-  max-width: min(100%, 920px);
+  max-width: var(--max-w);
 }
 
 .section-boundary .section-switch-line {
@@ -1260,7 +1260,7 @@ body {
 
 .cta-switch-wrap {
   background: var(--black);
-  padding: clamp(74px, 10vw, 136px) var(--px) 0;
+  padding: 0 var(--px);
 }
 
 .cta-switch-wrap .section-switch-line {
@@ -1442,9 +1442,14 @@ body {
 </section>
 
 <!-- ══ FORMATOS DE PRODUÇÃO ══ -->
+<div class="section-boundary">
+  <div class="section-inner">
+    <div class="section-switch-line"></div>
+  </div>
+</div>
+
 <section class="section" style="background:var(--black);" id="formatos">
   <div class="section-inner">
-    <div class="section-switch-line fade-up"></div>
     <div class="section-heading-block fade-up">
       <h2 class="section-main-title">Formatos de Produção</h2>
       <div class="section-title-line"></div>
@@ -1498,9 +1503,14 @@ body {
 </section>
 
 <!-- ══ MAIS PROJETOS ══ -->
+<div class="section-boundary">
+  <div class="section-inner">
+    <div class="section-switch-line"></div>
+  </div>
+</div>
+
 <section class="section" style="background:var(--black);" id="galeria">
   <div class="section-inner">
-    <div class="section-switch-line fade-up"></div>
     <div class="gal-header fade-up">
       <div class="gal-title-block">
         <h2 class="section-main-title" style="margin-bottom:0;">Mais Projetos</h2>
