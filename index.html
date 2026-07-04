@@ -1291,28 +1291,6 @@ body {
   padding-bottom: clamp(10px, 2vw, 24px) !important;
 }
 
-@media (min-width: 1024px) {
-  #formatos .section-main-title {
-    font-size: clamp(44px, 3.6vw, 58px) !important;
-  }
-
-  #formatos .fmt-num {
-    font-size: 12px !important;
-    margin-bottom: 14px !important;
-  }
-
-  #formatos .fmt-nome {
-    font-size: clamp(46px, 4.3vw, 64px) !important;
-    margin-bottom: 18px !important;
-  }
-
-  #formatos .fmt-desc {
-    font-size: clamp(16px, 1.25vw, 19px) !important;
-    line-height: 1.75 !important;
-    max-width: 560px !important;
-  }
-}
-
 #galeria {
   padding-bottom: clamp(46px, 5.5vw, 72px) !important;
   background: var(--black) !important;
@@ -1380,25 +1358,26 @@ body {
 }
 
 .cta-frase {
-  width: min(100%, 780px) !important;
+  width: auto !important;
+  max-width: min(100%, 780px) !important;
   margin-bottom: clamp(34px, 5vw, 50px) !important;
-  align-items: flex-start !important;
+  align-items: center !important;
   gap: clamp(4px, 0.8vw, 8px) !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .cta-line1 {
   font-size: clamp(12px, 2vw, 29px) !important;
   white-space: nowrap !important;
-  width: 100% !important;
-  text-align: left !important;
+  width: auto !important;
+  text-align: center !important;
 }
 
 .cta-line2 {
   font-size: clamp(28px, 4.35vw, 62px) !important;
   white-space: nowrap !important;
-  width: 100% !important;
-  text-align: left !important;
+  width: auto !important;
+  text-align: center !important;
 }
 
 .rodape-nome,
