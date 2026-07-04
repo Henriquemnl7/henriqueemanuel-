@@ -1247,6 +1247,10 @@ body {
 
 #galeria {
   padding-bottom: clamp(62px, 7vw, 92px) !important;
+  background: var(--black) !important;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
 }
 
 .gal-title-block {
@@ -1264,7 +1268,9 @@ body {
 
 .cta-switch-wrap {
   background: var(--black);
-  padding: 0 var(--px);
+  padding: 0 var(--px) clamp(44px, 5.6vw, 76px);
+  position: relative;
+  z-index: 3;
 }
 
 .cta-switch-wrap .section-switch-line {
@@ -1273,7 +1279,8 @@ body {
 }
 
 .cta-section {
-  padding-top: clamp(44px, 5.6vw, 76px) !important;
+  padding-top: 0 !important;
+  background: var(--black3) !important;
 }
 
 .cta-section::before {
