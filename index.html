@@ -54,7 +54,6 @@ body {
 /* TOKENS */
 :root {
   --black:   #0a0a0a;
-  --black2:  #0a0a0a;
   --black3:  #060606;
   --cream:   #edeade;
   --white:   #f2efe9;
@@ -1347,44 +1346,44 @@ body {
   display: block;
   width: 100%;
   max-width: none;
-  height: 1px !important;
+  height: 1px;
   margin: 0 !important;
-  opacity: 1 !important;
+  opacity: 1;
   background: linear-gradient(
     to right,
     rgba(255,255,255,0.06),
     rgba(255,255,255,0.18) 16%,
     rgba(255,255,255,0.18) 84%,
     rgba(255,255,255,0.06)
-  ) !important;
+  );
 }
 
 .cta-section {
   padding-top: clamp(30px, 4.2vw, 52px) !important;
-  background: var(--black3) !important;
+  background: var(--black3);
 }
 
 .hero,
 .ticker-wrap,
 .section-boundary {
-  background: var(--black) !important;
+  background: var(--black);
 }
 
 .rodape {
-  background: var(--black3) !important;
+  background: var(--black3);
 }
 
 .essencia {
-  background: var(--cream) !important;
+  background: var(--cream);
 }
 
 .cta-section::before {
-  display: none !important;
+  display: none;
 }
 
 .cta-logo {
-  width: clamp(88px, 14vw, 112px) !important;
-  height: clamp(88px, 14vw, 112px) !important;
+  width: clamp(88px, 14vw, 112px);
+  height: clamp(88px, 14vw, 112px);
 }
 
 .cta-frase {
@@ -1415,9 +1414,9 @@ body {
 
 .rodape-nome,
 .rodape-links a {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 400 !important;
-  color: rgba(242,239,233,0.7) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: rgba(242,239,233,0.7);
 }
 
 @media (max-width: 767px) {
