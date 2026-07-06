@@ -1187,6 +1187,7 @@ body {
   .hero-name {
     font-size: clamp(66px, 6.25vw, 112px) !important;
     line-height: 0.95 !important;
+    letter-spacing: 0 !important;
     white-space: nowrap !important;
   }
 
@@ -1775,7 +1776,7 @@ body {
     const bottomWidth = bottom.getBoundingClientRect().width;
     if (!topWidth || !bottomWidth || Math.abs(topWidth - bottomWidth) < 0.5) return;
 
-    const alignStrength = 0.72;
+    const alignStrength = 0.48;
     const topTarget = topWidth + ((Math.max(topWidth, bottomWidth) - topWidth) * alignStrength);
     const bottomTarget = bottomWidth + ((Math.max(topWidth, bottomWidth) - bottomWidth) * alignStrength);
 
