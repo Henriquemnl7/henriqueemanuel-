@@ -1434,26 +1434,30 @@ body {
 
 @media (max-width: 767px) {
   .hero-name {
-    display: inline-block !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
     width: max-content !important;
     max-width: calc(100vw - (var(--px) * 2)) !important;
+    margin-left: auto;
+    margin-right: auto;
     text-align: left !important;
   }
 
   .hero-name-line {
     display: block;
     width: max-content;
-    transform-origin: center center;
+    transform-origin: left center;
   }
 
   .hero-name-line-top {
     letter-spacing: 0;
-    transform: scaleX(calc(var(--hero-name-top-scale, 1) * var(--hero-name-mobile-tight, 1)));
+    transform: scaleX(var(--hero-name-top-scale, 1));
   }
 
   .hero-name-line-bottom {
     letter-spacing: 0;
-    transform: scaleX(calc(var(--hero-name-bottom-scale, 1) * var(--hero-name-mobile-tight, 1)));
+    transform: scaleX(var(--hero-name-bottom-scale, 1));
   }
 
   .hero-name br { display: none !important; }
@@ -1771,16 +1775,13 @@ body {
   function fit() {
     name.style.removeProperty('--hero-name-top-scale');
     name.style.removeProperty('--hero-name-bottom-scale');
-    name.style.removeProperty('--hero-name-mobile-tight');
-    if (window.innerWidth >= 768) return;
+        if (window.innerWidth >= 768) return;
 
     const topWidth = top.getBoundingClientRect().width;
     const bottomWidth = bottom.getBoundingClientRect().width;
     if (!topWidth || !bottomWidth || Math.abs(topWidth - bottomWidth) < 0.5) return;
 
-    name.style.setProperty('--hero-name-mobile-tight', '0.94');
-
-    if (topWidth < bottomWidth) {
+        if (topWidth < bottomWidth) {
       name.style.setProperty('--hero-name-top-scale', `${bottomWidth / topWidth}`);
     } else {
       name.style.setProperty('--hero-name-bottom-scale', `${topWidth / bottomWidth}`);
