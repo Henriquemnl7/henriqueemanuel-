@@ -414,10 +414,10 @@ body {
 
 .essencia-photo-wrap {
   order: 2;
-  padding: clamp(18px, 4vw, 28px) clamp(24px, 6vw, 54px) 0;
+  padding: clamp(10px, 2.8vw, 18px) clamp(24px, 6vw, 54px) 0;
   aspect-ratio: 1.22 / 1;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 .essencia-photo-wrap img {
@@ -426,6 +426,7 @@ body {
   object-fit: cover;
   object-position: top center;
   display: block;
+  border-radius: 6px;
 }
 
 .essencia-text {
@@ -448,7 +449,7 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--black);
-  margin-bottom: clamp(16px, 3vw, 24px);
+  margin-bottom: clamp(12px, 2.4vw, 18px);
 }
 
 .ess-frase {
@@ -1433,14 +1434,17 @@ body {
   .hero-name-line {
     display: block;
     width: max-content;
+    transform-origin: left center;
   }
 
   .hero-name-line-top {
     letter-spacing: var(--hero-name-top-track, 0px);
+    transform: scaleX(var(--hero-name-top-scale, 1));
   }
 
   .hero-name-line-bottom {
     letter-spacing: var(--hero-name-bottom-track, 0px);
+    transform: scaleX(var(--hero-name-bottom-scale, 1));
   }
 
   .hero-name br { display: none !important; }
@@ -1758,18 +1762,19 @@ body {
   function fit() {
     name.style.removeProperty('--hero-name-top-track');
     name.style.removeProperty('--hero-name-bottom-track');
+    name.style.removeProperty('--hero-name-top-scale');
+    name.style.removeProperty('--hero-name-bottom-scale');
     if (window.innerWidth >= 768) return;
 
     const topWidth = top.getBoundingClientRect().width;
     const bottomWidth = bottom.getBoundingClientRect().width;
     if (!topWidth || !bottomWidth || Math.abs(topWidth - bottomWidth) < 0.5) return;
 
-    const shorter = topWidth < bottomWidth ? top : bottom;
-    const shorterVar = topWidth < bottomWidth ? '--hero-name-top-track' : '--hero-name-bottom-track';
-    const gaps = Math.max(shorter.textContent.trim().length, 1);
-    const track = Math.abs(bottomWidth - topWidth) / gaps;
-
-    name.style.setProperty(shorterVar, `${track}px`);
+    if (topWidth < bottomWidth) {
+      name.style.setProperty('--hero-name-top-scale', `${bottomWidth / topWidth}`);
+    } else {
+      name.style.setProperty('--hero-name-bottom-scale', `${topWidth / bottomWidth}`);
+    }
   }
 
   window.addEventListener('load', fit);
