@@ -253,6 +253,7 @@ body {
   font-size: clamp(52px, 15.4vw, 92px);
   line-height: 0.93;
   letter-spacing: 0;
+  word-spacing: -0.08em;
   color: #f2efe9;
   margin-bottom: clamp(24px, 4.8vw, 34px);
 }
@@ -1123,6 +1124,7 @@ body {
     height: 100%;
     aspect-ratio: unset;
     object-fit: cover;
+    border-radius: 0;
   }
 
   .essencia-text {
@@ -1188,6 +1190,7 @@ body {
     font-size: clamp(66px, 6.25vw, 112px) !important;
     line-height: 0.95 !important;
     letter-spacing: 0 !important;
+    word-spacing: -0.1em !important;
     white-space: nowrap !important;
   }
 
@@ -1444,13 +1447,13 @@ body {
   }
 
   .hero-name-line-top {
-    letter-spacing: var(--hero-name-top-track, 0px);
-    transform: scaleX(var(--hero-name-top-scale, 1));
+    letter-spacing: 0;
+    transform: scaleX(calc(var(--hero-name-top-scale, 1) * var(--hero-name-mobile-tight, 1)));
   }
 
   .hero-name-line-bottom {
-    letter-spacing: var(--hero-name-bottom-track, 0px);
-    transform: scaleX(var(--hero-name-bottom-scale, 1));
+    letter-spacing: 0;
+    transform: scaleX(calc(var(--hero-name-bottom-scale, 1) * var(--hero-name-mobile-tight, 1)));
   }
 
   .hero-name br { display: none !important; }
@@ -1766,24 +1769,21 @@ body {
   if (!name || !top || !bottom) return;
 
   function fit() {
-    name.style.removeProperty('--hero-name-top-track');
-    name.style.removeProperty('--hero-name-bottom-track');
     name.style.removeProperty('--hero-name-top-scale');
     name.style.removeProperty('--hero-name-bottom-scale');
+    name.style.removeProperty('--hero-name-mobile-tight');
     if (window.innerWidth >= 768) return;
 
     const topWidth = top.getBoundingClientRect().width;
     const bottomWidth = bottom.getBoundingClientRect().width;
     if (!topWidth || !bottomWidth || Math.abs(topWidth - bottomWidth) < 0.5) return;
 
-    const alignStrength = 0.48;
-    const topTarget = topWidth + ((Math.max(topWidth, bottomWidth) - topWidth) * alignStrength);
-    const bottomTarget = bottomWidth + ((Math.max(topWidth, bottomWidth) - bottomWidth) * alignStrength);
+    name.style.setProperty('--hero-name-mobile-tight', '0.94');
 
     if (topWidth < bottomWidth) {
-      name.style.setProperty('--hero-name-top-scale', `${topTarget / topWidth}`);
+      name.style.setProperty('--hero-name-top-scale', `${bottomWidth / topWidth}`);
     } else {
-      name.style.setProperty('--hero-name-bottom-scale', `${bottomTarget / bottomWidth}`);
+      name.style.setProperty('--hero-name-bottom-scale', `${topWidth / bottomWidth}`);
     }
   }
 
