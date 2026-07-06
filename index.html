@@ -710,8 +710,13 @@ body {
 
 .dest-item .video-card {
   width: 100%;
-  border: 0;
-  box-shadow: none;
+}
+
+#destaques .video-card,
+#formatos .video-card,
+#galeria .video-card {
+  border: 0.5px solid rgba(242,239,233,0.2);
+  box-shadow: 0 0 0 1px rgba(242,239,233,0.035);
 }
 
 .dest-item .video-card:focus-visible {
@@ -1770,10 +1775,14 @@ body {
     const bottomWidth = bottom.getBoundingClientRect().width;
     if (!topWidth || !bottomWidth || Math.abs(topWidth - bottomWidth) < 0.5) return;
 
+    const alignStrength = 0.72;
+    const topTarget = topWidth + ((Math.max(topWidth, bottomWidth) - topWidth) * alignStrength);
+    const bottomTarget = bottomWidth + ((Math.max(topWidth, bottomWidth) - bottomWidth) * alignStrength);
+
     if (topWidth < bottomWidth) {
-      name.style.setProperty('--hero-name-top-scale', `${bottomWidth / topWidth}`);
+      name.style.setProperty('--hero-name-top-scale', `${topTarget / topWidth}`);
     } else {
-      name.style.setProperty('--hero-name-bottom-scale', `${topWidth / bottomWidth}`);
+      name.style.setProperty('--hero-name-bottom-scale', `${bottomTarget / bottomWidth}`);
     }
   }
 
