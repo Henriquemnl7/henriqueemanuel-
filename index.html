@@ -415,15 +415,17 @@ body {
 .essencia-photo-wrap {
   order: 2;
   padding: clamp(18px, 4vw, 28px) clamp(24px, 6vw, 54px) 0;
+  aspect-ratio: 1.22 / 1;
+  overflow: hidden;
+  border-radius: 3px;
 }
 
 .essencia-photo-wrap img {
   width: 100%;
-  aspect-ratio: 1.22 / 1;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
-  border-radius: 3px;
 }
 
 .essencia-text {
@@ -1106,13 +1108,14 @@ body {
     grid-column: 1;
     grid-row: 1 / span 2;
     height: 100%;
+    aspect-ratio: unset;
+    border-radius: 0;
   }
 
   .essencia-photo-wrap img {
     width: 100%;
     height: 100%;
     aspect-ratio: unset;
-    border-radius: 0;
     object-fit: cover;
   }
 
@@ -1307,7 +1310,7 @@ body {
 }
 
 #galeria {
-  padding-bottom: clamp(46px, 5.5vw, 72px) !important;
+  padding-bottom: clamp(62px, 6.4vw, 92px) !important;
   background: var(--black) !important;
   position: relative;
   z-index: 3;
@@ -1534,7 +1537,7 @@ body {
     <p class="ess-label">A Essência</p>
   </div>
   <div class="essencia-photo-wrap">
-    <img src="assets/essencia-photo.webp" alt="Henrique Emanuel" width="600" height="600" loading="lazy" decoding="async">
+    <img src="assets/essencia-photo.webp" srcset="assets/essencia-photo.webp 600w, assets/essencia-photo-2x.webp 1024w" sizes="(min-width: 768px) 440px, calc(100vw - 48px)" alt="Henrique Emanuel" width="600" height="600" loading="lazy" decoding="async">
   </div>
   <div class="essencia-text fade-up">
     <h2 class="ess-frase">Eu não edito vídeos, eu transformo conteúdo em resultado.</h2>
