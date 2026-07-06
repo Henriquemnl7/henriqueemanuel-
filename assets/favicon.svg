@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Henrique Emanuel">
-  <rect width="64" height="64" rx="12" fill="#0a0a0a"/>
-  <circle cx="32" cy="32" r="17" fill="none" stroke="#f2efe9" stroke-width="2" opacity=".72"/>
-  <path d="M48 9 35.5 35.5 16 55 28.5 28.5 48 9Z" fill="#f2efe9"/>
-  <path d="M10 23 30.5 31.5 55 41 34.5 32.5 10 23Z" fill="#f2efe9" opacity=".94"/>
-  <circle cx="32" cy="32" r="4" fill="#0a0a0a"/>
-</svg>
